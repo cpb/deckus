@@ -7,7 +7,7 @@ describe "authentication", ->
 
   describe "GET /", ->
     before (done) ->
-      params = uri: "http://localhost:3000"
+      params = uri: "http://localhost:#{app.settings.port}"
 
       request params, (_err, _response, _body) ->
         err      = _err

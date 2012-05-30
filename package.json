@@ -11,5 +11,8 @@
   "devDependencies": {
     "mocha": "~1.0.3",
     "request": "~2.9.202"
+  },
+  "scripts": {
+	"test": "./bin/test"
   }
 }
