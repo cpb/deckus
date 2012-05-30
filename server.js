@@ -3,20 +3,10 @@
  * Module dependencies.
  */
 
+require('coffee-script')
+
 var express = require('express')
-  , routes  = require('./routes')
-	, app = module.exports = express.createServer()
-	, io  = require('socket.io').listen(app);
-
-// Websocket
-
-io.sockets.on('connection', function(socket) {
-	console.log('connected');
-
-	socket.on('message', function(message) {
-		console.log(message);
-	});
-});
+  , app = module.exports = express.createServer();
 
 // Configuration
 
@@ -41,7 +31,11 @@ app.configure('production', function(){
 
 // Routes
 
-app.get('/', routes.index);
+require('./apps/authentication/routes')(app)
+
+// IO
+
+require('./apps/io/events')(app)
 
 app.listen(3000, function(){
   console.log("Express server listening on port %d in %s mode", app.address().port, app.settings.env);
