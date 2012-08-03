@@ -37,7 +37,7 @@ app.configure('production', function(){
 
 // Routes
 
-require('./apps/authentication/routes')(app)
+require('./apps/deckus/routes')(app)
 
 // IO
 
